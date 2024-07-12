@@ -75,3 +75,60 @@ Actualmente, el proyecto está en desarrollo y no acepta contribuciones externas
 Para preguntas, sugerencias o colaboraciones, puedes contactarnos a través del siguiente correo electrónico:
 
 [controldigitalco@gmail.com](mailto:controldigitalco@gmail.com)
+
+## Estructura del proyecto
+InfoPedia/  
+├── index.html  
+├── assets/  
+│   ├── images/               # Carpeta para imágenes  
+│   └── fonts/                # Carpeta para fuentes  
+├── components/               # Componentes dinámicos de HTML  
+│   ├── header.html  
+│   ├── footer.html  
+│   ├── article-card.html  
+│   ├── search-bar.html  
+│   └── user-login.html  
+├── css/                      # Estilos CSS  
+│   ├── main.css  
+│   ├── navbar.css  
+│   ├── article-card.css  
+│   ├── search-bar.css  
+│   └── user-login.css  
+├── js/                       # Funciones de JavaScript  
+│   ├── main.js  
+│   ├── ajax/  
+│   │   ├── fetch-articles.js  
+│   │   ├── post-comment.js  
+│   │   ├── user-login.js  
+│   │   └── user-register.js  
+│   └── components/  
+│       ├── load-header.js  
+│       ├── load-footer.js  
+│       ├── load-article-cards.js  
+│       ├── load-search-bar.js  
+│       └── load-user-login.js  
+├── server/                   # Archivos backend PHP  
+│   ├── db/  
+│   │   ├── db-connection.php  
+│   │   ├── create-tables.php  
+│   │   └── seed-data.php  
+│   ├── api/  
+│   │   ├── get-articles.php  
+│   │   ├── post-comment.php  
+│   │   ├── user-login.php  
+│   │   └── user-register.php  
+│   ├── auth/  
+│   │   ├── login.php  
+│   │   ├── logout.php  
+│   │   └── register.php  
+│   ├── config.php  
+│   └── functions.php  
+├── database/                 # Scripts y archivos de la base de datos  
+│   ├── schema.sql  
+│   ├── insert-sample-data.sql  
+│   └── backup/  
+│       ├── backup-2024-07-12.sql  
+│       └── ...  
+├── README.md  
+├── LICENSE  
+└── .gitignore  
