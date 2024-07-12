@@ -76,7 +76,7 @@ Para preguntas, sugerencias o colaboraciones, puedes contactarnos a través del 
 
 [controldigitalco@gmail.com](mailto:controldigitalco@gmail.com)
 
-## Estructura del proyecto
+## Estructura del proyecto (a modo de ejemplo)
 InfoPedia/  
 ├── index.html  
 ├── assets/  
