@@ -1,4 +1,5 @@
 # InfoPedia
+
 InfoPedia es un repositorio de información variada que incluye tutoriales, resúmenes de estudio, anécdotas, historias, reseñas y más. Está dirigido a personas de 15 años en adelante con habilidades de pensamiento crítico. El objetivo es proporcionar una plataforma accesible y útil para la búsqueda y publicación de contenido informativo.
 
 ## Funcionalidades
@@ -27,7 +28,7 @@ InfoPedia es un repositorio de información variada que incluye tutoriales, res�
 
 ## Paleta de Colores
 
-- **Colores Primarios**: 
+- **Colores Primarios**:
   - Azul Marino (#2C3E50): Navbar y encabezados principales.
   - Blanco (#FFFFFF): Fondos y textos en fondos oscuros.
   - Gris Claro (#ECF0F1): Fondos de secciones y tarjetas.
@@ -77,6 +78,7 @@ Para preguntas, sugerencias o colaboraciones, puedes contactarnos a través del 
 [controldigitalco@gmail.com](mailto:controldigitalco@gmail.com)
 
 ## Estructura del proyecto (a modo de ejemplo)
+
 InfoPedia/  
 ├── index.html  
 ├── assets/  
