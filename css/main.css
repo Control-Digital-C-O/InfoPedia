@@ -1,17 +1,25 @@
 /* Aquí se define estilos generales de la pagina como lo son las fuentes */
 :root {
-  /* Colores Primarios */
-  --header: #2C3E50;
-  --background: #FFFFFF;
-  --background-section: #ECF0F1;
-  /* Colores Secundarios */
-  --positive: #2ECC71;
-  --warning: #E67E22;
-  --error: #E74C3C;
-  /* Colores de acentuación */
-  --links: #3498DB;
-  --strong: #F1C40F;
-  --nice: #9B59B6;
+  --color_primary: #5e9188; /* Color principal */
+  --color_secondary: #ffffff; /* Color secundario */
+  --color_tertiary: #00e676; /* Color terciario */
+  --color_background: #253342; /* Color de fondo */
+  --color_important: #ffd700; /* Color para información importante */
+  --color_accent: #f06292; /* Color de acento */
+  --color_text: #e0e0e0; /* Color de texto */
+  --color_text_secondary: #b0bec5; /* Color de texto secundario */
+  --color_border: #37474f; /* Color de borde */
+  --color_hover: #80cbc4; /* Color para hover */
+  --color_active: #4db6ac; /* Color para estados activos */
+  --color_success: #66bb6a; /* Color para éxito */
+  --color_error: #ef5350; /* Color para errores */
+  --color_warning: #ffa726; /* Color para advertencias */
+  --color_info: #29b6f6; /* Color para información */
+  --color_background_light: #37474f; /* Fondo claro para secciones */
+  --color_background_dark: #102027; /* Fondo oscuro para secciones */
+
+  --tamano_nombre_empresa: 50px;
+  --tamano_links_header: 25px;
 
   --shadow-color: 210deg 36% 47%;
   --shadow-elevation-medium: 0.3px 0.5px 0.9px hsl(var(--shadow-color) / 0),
@@ -19,6 +27,7 @@
     3px 6.1px 10.2px hsl(var(--shadow-color) / 0.55),
     6.3px 12.5px 21px hsl(var(--shadow-color) / 0.82);
 }
+
 /* Definir la fuente Roboto */
 /* Roboto Regular */
 @font-face {
@@ -85,11 +94,59 @@
   font-style: italic;
 }
 
-/* Usar las fuentes en el proyecto */
-body {
-  font-family: 'Roboto', sans-serif;
+/* Clases, etiquetas y id */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Open Sans', sans-serif;
+}
+
+a {
+  color: var(--color_tertiary);
+}
+
+a:hover {
+  color: var(--color_hover);
+}
+
+.button {
+  background-color: var(--color_accent);
+  color: var(--color_secondary);
+  box-shadow: var(--shadow-elevation-medium);
+}
+
+.button:active {
+  background-color: var(--color_active);
+}
+
+.alert-success {
+  background-color: var(--color_success);
+  color: var(--color_secondary);
+}
+
+.alert-error {
+  background-color: var(--color_error);
+  color: var(--color_secondary);
+}
+
+.alert-warning {
+  background-color: var(--color_warning);
+  color: var(--color_secondary);
+}
+
+.alert-info {
+  background-color: var(--color_info);
+  color: var(--color_secondary);
+}
+
+.section-light {
+  background-color: var(--color_background_light);
+}
+
+.section-dark {
+  background-color: var(--color_background_dark);
 }
