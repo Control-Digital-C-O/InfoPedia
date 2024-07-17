@@ -4,12 +4,112 @@ InfoPedia es un repositorio de información variada que incluye tutoriales, res�
 
 ## Funcionalidades
 
-- **Barra de Búsqueda**: Permite a los usuarios buscar artículos específicos.
-- **Botón de Filtro**: Filtra artículos por categorías, popularidad, y más.
-- **Artículos Populares**: Muestra los 10 artículos más populares entre los usuarios.
-- **Registro de Usuarios**: Los usuarios pueden registrarse para comentar y colaborar.
-- **Gestión de Administradores**: Los administradores pueden gestionar el contenido y los colaboradores.
-- **Diseño Responsivo**: El sitio está diseñado para ser accesible en dispositivos móviles y de escritorio.
+## Gestión de Usuarios  
+
+### Funciones Necesarias
+
+#### Registro de Usuarios
+
+- **Formulario de Registro:** Captura de datos básicos (nombre, email, contraseña).
+- **Verificación de Email:** Envío de un email de confirmación con un enlace para verificar la cuenta.
+
+#### Login de Usuarios
+
+- **Formulario de Login:** Captura de email y contraseña.
+- **Sesiones:** Gestión de sesiones para mantener al usuario autenticado.
+
+#### Gestión de Perfiles
+
+- **Vista del Perfil:** Muestra la información del usuario y su foto de perfil.
+- **Edición del Perfil:** Permitir la actualización de información personal y subida de foto de perfil.
+
+#### Recuperación de Contraseñas
+
+- **Formulario de Recuperación:** Captura de email para enviar enlace de recuperación.
+- **Restablecimiento de Contraseña:** Permitir al usuario restablecer su contraseña a través del enlace enviado.
+
+#### Gestión de Roles y Permisos
+
+- **Asignación de Roles:** Panel de administración para asignar y cambiar roles.
+- **Permisos de Acceso:** Control de acceso basado en roles a diferentes partes del sitio.
+
+#### Sistema de Denuncias
+
+- **Denuncia de Usuarios:** Funcionalidad para que cualquier rol pueda denunciar a otro usuario.
+- **Gestión de Denuncias:** Panel para que los Masters revisen y gestionen las denuncias.
+
+## Publicación y Gestión de Artículos
+
+### Funciones Necesarias
+
+#### Creación de Artículos
+
+- **Formulario de Creación:** Permitir a colaboradores crear artículos con título, contenido, categorías, y etiquetas.
+- **Envío para Aprobación:** Los artículos se envían a los administradores o Masters para su revisión.
+
+#### Moderación de Artículos
+
+- **Aprobación/Rechazo de Artículos:** Panel de administración para revisar y aprobar/rechazar artículos.
+
+#### Edición y Eliminación de Artículos
+
+- **Editar Artículos:** Permitir a los colaboradores y administradores editar artículos.
+- **Eliminar Artículos:** Permitir a los colaboradores y administradores eliminar artículos.
+
+#### Categorías y Etiquetas
+
+- **Gestión de Categorías:** Administradores pueden crear, editar, y eliminar categorías.
+- **Etiquetas:** Sistema de etiquetado para artículos.
+
+#### Búsqueda y Filtrado
+
+- **Motor de Búsqueda:** Implementar búsqueda de artículos por título, contenido, autor, categoría, y etiquetas.
+- **Filtros Avanzados:** Permitir filtrado por categoría, etiquetas, autor, fecha, etc.
+
+#### Artículos Mejor Valorados y Más Vistos
+
+- **Ranking de Artículos:** Mostrar los 5 artículos mejor valorados y los más vistos en el último mes.
+
+## Interacción de los Usuarios
+
+### Funciones Necesarias
+
+#### Sistema de Comentarios
+
+- **Comentar en Artículos:** Permitir a los usuarios comentar en los artículos.
+- **Moderación de Comentarios:** Administradores y Masters pueden editar y eliminar comentarios.
+
+#### Valoraciones y Likes
+
+- **Valoración de Artículos:** Sistema de puntuación de 0 a 5 estrellas para artículos.
+- **Likes en Comentarios:** Permitir a los usuarios dar likes (pulgar arriba) o dislikes (pulgar abajo) a los comentarios.
+
+## Seguridad
+
+### Funciones Necesarias
+
+#### Encriptación SSL/TLS
+
+- **Implementación de HTTPS:** Asegurar el sitio web con un certificado SSL para cifrar la comunicación.
+
+#### Validación y Sanitización de Datos
+
+- **Protección Contra Inyecciones SQL y XSS:** Validar y sanear todas las entradas de usuarios.
+
+#### Autorización y Autenticación Segura
+
+- **Gestión de Sesiones Seguras:** Asegurar que las sesiones de usuarios sean seguras y protegidas.
+
+## Panel de Administración
+
+### Funciones Necesarias
+
+#### Dashboard de Administración
+
+- **Vista General:** Métricas y estadísticas del sitio.
+- **Gestión de Usuarios:** Herramientas para administrar usuarios y roles.
+- **Gestión de Contenidos:** Panel para revisar, aprobar, editar y eliminar artículos.
+- **Gestión de Denuncias:** Herramientas para revisar y actuar sobre denuncias de usuarios y contenidos.
 
 ## Tecnologías
 

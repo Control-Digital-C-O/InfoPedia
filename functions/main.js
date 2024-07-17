@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   preCargaArchivos();
 
   // Espera un tiempo corto para asegurar que los elementos se hayan cargado completamente
-  setTimeout(setupNavbarMenuAnimation, 100);
+  setTimeout(setupNavbarMenuAnimation, 1000);
 });
 
 // Opcional: Escucha cambios en el tamaño de la pantalla y vuelve a verificar
