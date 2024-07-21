@@ -40,7 +40,7 @@ InfoPedia es un repositorio de información variada que incluye tutoriales, res�
 
 ## Publicación y Gestión de Artículos
 
-### Funciones Necesarias
+### Funciones Necesarias Artículos
 
 #### Creación de Artículos
 
@@ -72,7 +72,7 @@ InfoPedia es un repositorio de información variada que incluye tutoriales, res�
 
 ## Interacción de los Usuarios
 
-### Funciones Necesarias
+### Funciones Necesarias Usuarios
 
 #### Sistema de Comentarios
 
@@ -86,7 +86,7 @@ InfoPedia es un repositorio de información variada que incluye tutoriales, res�
 
 ## Seguridad
 
-### Funciones Necesarias
+### Funciones Necesarias Seguridad
 
 #### Encriptación SSL/TLS
 
@@ -102,7 +102,7 @@ InfoPedia es un repositorio de información variada que incluye tutoriales, res�
 
 ## Panel de Administración
 
-### Funciones Necesarias
+### Funciones Necesarias Administración
 
 #### Dashboard de Administración
 

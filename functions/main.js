@@ -2,23 +2,14 @@ import { preCargaArchivos } from "./ajax/search.js";
 
 import { setupNavbarMenuAnimation } from "./ajax/bars_menu.js";
 
+import { loginCard } from "./ajax/login.js";
+
 document.addEventListener("DOMContentLoaded", function () {
   // Llama a la función para cargar archivos CSS, HTML y PHP dinámicamente
   preCargaArchivos();
 
-  // Espera un tiempo corto para asegurar que los elementos se hayan cargado completamente
+  // Espera un tiempo corto
   setTimeout(setupNavbarMenuAnimation, 1000);
+
+  setTimeout(loginCard, 1000);
 });
-
-// Opcional: Escucha cambios en el tamaño de la pantalla y vuelve a verificar
-// window.addEventListener("resize", setupNavbarMenuAnimation);
-
-function checkScreenSizeAndSetupNavbar() {
-  // Define el tamaño de pantalla que deseas verificar
-  const mediaQuery = window.matchMedia("(max-width: 767px)"); // Por ejemplo, para pantallas menores o iguales a 768px
-
-  if (mediaQuery.matches) {
-    setupNavbarMenuAnimation();
-  } else {
-  }
-}

@@ -39,6 +39,8 @@ function prioridad(&$html_array, $nombre_componente, $prioridad)
     case 'end':
       array_push($html_array, $nombre_componente);
       break;
+    case 'eliminate':
+      break;
     default:
       // Si la prioridad es un número, insertarlo en la posición específica
       if (is_numeric($prioridad) && $prioridad >= 0 && $prioridad < count($html_array)) {
@@ -51,6 +53,7 @@ function prioridad(&$html_array, $nombre_componente, $prioridad)
 // Ajustar el orden de prioridad de los componentes HTML
 prioridad($rutas_archivos_html, '../components/header.html', 'start');
 prioridad($rutas_archivos_html, '../components/footer.html', 'end');
+prioridad($rutas_archivos_html, '../components/loginCard.html', 'eliminate');
 
 // Combinar las listas en un solo objeto JSON.
 $resultado = array(

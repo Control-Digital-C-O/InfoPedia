@@ -106,6 +106,10 @@ header a {
   color: var(--color_tertiary);
 }
 
+.user {
+  cursor: pointer;
+}
+
 /* Para dispositivos mas grandes que un móvil */
 @media (min-width: 768px) {
   .nav__links {

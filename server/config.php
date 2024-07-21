@@ -1,14 +1,13 @@
 <?php
-// Configuración de la base de datos
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "db_infopedia";
+$db_servername = "127.0.0.1";
+$db_username = "root";
+$db_password = "";
+$db_dbname = "db_infopedia";
 
 // Crear la conexión
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conexion = new mysqli($db_servername, $db_username, $db_password, $db_dbname);
 
 // Verificar la conexión
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
+if ($conexion->connect_error) {
+  die("Conexión fallida: " . $conexion->connect_error);
 }
