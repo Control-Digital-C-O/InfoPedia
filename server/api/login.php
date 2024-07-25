@@ -1,6 +1,6 @@
 <?php
 header("Content-Type: application/json");
-$response = array("success" => false, "message" => "");
+$response = array("success" => false, "message" => "", "username" => "");
 
 // Verificar el método de la solicitud
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -63,6 +63,8 @@ if ($user === null) {
     $_SESSION['username'] = $user['nombre'];
     $response["success"] = true;
     $response["message"] = "Inicio de sesión exitoso";
+    $response["username"] = $user['nombre'];
+    $response["user_id"] = $user['id'];
   } else {
     $response["message"] = "Contraseña incorrecta";
   }

@@ -1,0 +1,109 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--color_background_dark);
+  padding: 20px;
+  border-radius: 8px 0 8px 8px;
+  position: fixed;
+  right: 0;
+  bottom: unset;
+  top: 64px;
+  clip-path: circle(0% at top right); /* Estado inicial para la animación */
+  transition: clip-path 0.4s; /* Transición para la animación */
+  pointer-events: auto;
+}
+
+.card.active {
+  clip-path: circle(150% at top right); /* Estado final para la animación */
+}
+
+/* Otros estilos necesarios */
+.tituloForm {
+  margin-bottom: 16px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color_text);
+}
+
+.campo {
+  display: flex;
+  align-items: center;
+  background-color: var(--color_background_light);
+  border-radius: 8px;
+  padding: 12px;
+  margin: 8px 0;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+
+.input-Icon {
+  height: 16px;
+  width: 16px;
+  fill: var(--color_text_secondary);
+  margin-right: 8px;
+}
+
+.input-campo {
+  flex: 2;
+  background: none;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: var(--color_text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.btn {
+  margin: 16px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  box-shadow: 0 8px 24px 0 var(--shadow-color);
+  transition: all 0.3s ease-in-out;
+}
+
+.btn:hover {
+  background-color: var(--color_success);
+  color: var(--color_text);
+  box-shadow: 0 8px 24px 0 var(--shadow-elevation-medium);
+}
+
+.btn-cancel {
+  background-color: var(--color_error);
+  color: var(--color_text);
+}
+
+#btn-summit {
+  background-color: var(--color_success);
+  color: var(--color_text);
+}
+
+.btn-link {
+  color: var(--color_info);
+  display: block;
+  font-size: 12px;
+  transition: color 0.3s ease-out;
+}
+
+#btn-summit:hover, .btn-cancel:hover {
+  background-color: var(--color_border);
+  color: var(--color_important);
+  box-shadow: 0 8px 24px 0 var(--shadow-elevation-medium);
+}
+
+.btn-link:hover {
+  color: var(--color_important);
+}
+
+.field input:focus::placeholder {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}

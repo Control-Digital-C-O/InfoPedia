@@ -7,7 +7,7 @@ header {
   padding: 5px 10px;
   display: flex;
   flex-direction: row-reverse;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -16,7 +16,7 @@ header a {
 }
 
 .centrarT {
-  width: 95%;
+  margin-left: 25px;
   display: flex;
   justify-content: center;
 }
@@ -104,6 +104,10 @@ header a {
 
 .nav__link:hover {
   color: var(--color_tertiary);
+}
+
+.boton_menu {
+  width: 30px;
 }
 
 .user {

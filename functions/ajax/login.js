@@ -1,78 +1,54 @@
-export function loginCard() {
-  const userIcon = document.querySelector(".user");
-  const loginContainer = document.getElementById("login_container");
+export async function handleLogin(event) {
+  event.preventDefault(); // Prevenir el comportamiento por defecto del formulario
 
-  if (userIcon) {
-    userIcon.addEventListener("click", function (event) {
-      event.stopPropagation();
-      toggleLoginCard();
+  const form = event.target;
+  const formData = new FormData(form);
+  const data = {
+    username_or_email: formData.get("username_or_email"),
+    password: formData.get("password"),
+  };
+
+  if (!data.username_or_email || !data.password) {
+    alert("Faltan campos requeridos");
+    return;
+  }
+
+  try {
+    const response = await fetch("../../server/api/login.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
     });
 
-    document.addEventListener("click", function (event) {
-      const isClickInside =
-        userIcon.contains(event.target) ||
-        loginContainer.contains(event.target);
-      if (!isClickInside) {
-        closeLoginCard();
-      }
-    });
+    const result = await response.json();
+
+    if (result.success) {
+      // Recargar la página para actualizar el estado de la sesión
+      window.location.reload();
+    } else {
+      // Mostrar mensaje de advertencia si el login falla
+      alert(result.message);
+    }
+  } catch (error) {
+    console.error("Error during login:", error);
   }
 }
 
-function toggleLoginCard() {
-  const loginContainer = document.getElementById("login_container");
-
-  if (loginContainer.innerHTML.trim() === "") {
-    fetch("../../components/loginCard.html")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("La respuesta de la red no está bien");
-        }
-        return response.text();
-      })
+export function dataSession() {
+  const usernameSpan = document.getElementById("username");
+  if (usernameSpan) {
+    // Obtener el nombre de usuario desde la sesión (esto puede necesitar ser ajustado según tu configuración)
+    fetch("../server/api/get_session.php")
+      .then((response) => response.json())
       .then((data) => {
-        document.getElementById("login_container").innerHTML = data;
-        loginForm();
+        if (data.success && data.username) {
+          usernameSpan.textContent = data.username;
+        }
       })
-      .catch((error) => console.error("Error loading login card:", error));
-  } else {
-    closeLoginCard();
+      .catch((error) => {
+        console.error("Error al obtener el nombre de usuario:", error);
+      });
   }
-}
-
-function closeLoginCard() {
-  const loginContainer = document.getElementById("login_container");
-  loginContainer.innerHTML = "";
-}
-
-function loginForm() {
-  const loginForm = document.getElementById("loginform");
-  if (loginForm) {
-    loginForm.addEventListener("submit", function (event) {
-      event.preventDefault();
-      const formData = new FormData(loginForm);
-      loginUser(formData);
-    });
-  }
-}
-
-function loginUser(formData) {
-  fetch("../../server/api/login.php", {
-    method: "POST",
-    body: formData,
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Error en la autenticación");
-      }
-      return response.json();
-    })
-    .then((data) => {
-      if (data.success) {
-        window.location.href = "dashboard.php";
-      } else {
-        alert(data.message);
-      }
-    })
-    .catch((error) => console.error("Error de autenticación:", error));
 }

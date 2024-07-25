@@ -1,3 +1,5 @@
+// Animación del menu hamburguesa
+// Función para animar el menú de la barra de navegación
 export function setupNavbarMenuAnimation() {
   // Obtener elementos del DOM
   var iconMenu = document.getElementById("icon-menu");
@@ -54,5 +56,36 @@ export function setupNavbarMenuAnimation() {
     console.error(
       "Elemento con ID 'icon-menu' o clase 'bars__menu' no encontrado."
     );
+  }
+}
+
+// Animación de card login
+export function initCardAnimation() {
+  var iconUser = document.getElementById("iconUser");
+  var card = document.querySelector(".card");
+
+  if (iconUser && card) {
+    // Función para mostrar/ocultar la tarjeta y cambiar el cursor
+    function toggleCard(event) {
+      card.classList.toggle("active");
+      iconUser.style.cursor = card.classList.contains("active")
+        ? "default"
+        : "pointer";
+      event.stopPropagation(); // Evita que el clic se propague al documento
+    }
+
+    iconUser.addEventListener("click", toggleCard);
+
+    // Función para cerrar la tarjeta si se hace clic fuera
+    function closeCardOnClickOutside(event) {
+      if (!card.contains(event.target) && !event.target.closest(".card")) {
+        card.classList.remove("active");
+        iconUser.style.cursor = "pointer";
+      }
+    }
+
+    document.addEventListener("click", closeCardOnClickOutside);
+  } else {
+    console.error("Elemento con id 'iconUser' o 'card' no encontrado");
   }
 }

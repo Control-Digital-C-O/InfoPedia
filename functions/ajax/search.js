@@ -7,8 +7,18 @@ export function preCargaArchivos() {
         if (xhr.status === 200) {
           var data = JSON.parse(xhr.responseText);
           cargarCSS(data.css); // Función para cargar CSS
-          cargarHTML(data.html); // Función para cargar HTML
-          resolve(); // Resolver la promesa cuando la carga sea exitosa
+          cargarHTML(data.html) // Función para cargar HTML
+            .then(() => {
+              // Ahora cargamos el archivo especificado por la variable card
+              return cargarCard();
+            })
+            .then(() => {
+              resolve(); // Resolver la promesa cuando la carga sea exitosa
+            })
+            .catch((error) => {
+              console.error("Error al cargar archivos:", error);
+              reject(new Error(`Error al cargar archivos: ${error}`));
+            });
         } else {
           console.error(
             "Error al cargar search.php:",
@@ -71,7 +81,10 @@ function cargarHTML(htmlFiles) {
         });
       });
     });
+
+    return promise;
   }
+  return Promise.resolve();
 }
 
 function cargarArticulos() {
@@ -93,4 +106,52 @@ function cargarArticulos() {
         console.error("Elemento con id 'articulos' no encontrado.");
       }
     });
+}
+
+function cargarCard() {
+  return new Promise((resolve, reject) => {
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", "../../server/api/authenticator_login.php", true);
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          var data = JSON.parse(xhr.responseText);
+          console.log("Respuesta de authenticator.php:", data); // Agrega esta línea
+          var cardFile = data.card;
+          console.log("Archivo de card a cargar:", cardFile); // Agrega esta línea
+
+          var xhrCard = new XMLHttpRequest();
+          xhrCard.open("GET", cardFile, true);
+          xhrCard.onreadystatechange = function () {
+            if (xhrCard.readyState === 4) {
+              if (xhrCard.status === 200) {
+                var tempDiv = document.createElement("div");
+                tempDiv.innerHTML = xhrCard.responseText;
+                document.querySelector("#login_container").innerHTML =
+                  tempDiv.innerHTML;
+                resolve();
+              } else {
+                console.error(
+                  "Error al cargar card HTML:",
+                  cardFile,
+                  xhrCard.status,
+                  xhrCard.statusText
+                );
+                reject();
+              }
+            }
+          };
+          xhrCard.send();
+        } else {
+          console.error(
+            "Error al cargar authenticator.php:",
+            xhr.status,
+            xhr.statusText
+          );
+          reject();
+        }
+      }
+    };
+    xhr.send();
+  });
 }

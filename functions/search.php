@@ -54,6 +54,7 @@ function prioridad(&$html_array, $nombre_componente, $prioridad)
 prioridad($rutas_archivos_html, '../components/header.html', 'start');
 prioridad($rutas_archivos_html, '../components/footer.html', 'end');
 prioridad($rutas_archivos_html, '../components/loginCard.html', 'eliminate');
+prioridad($rutas_archivos_html, '../components/userCard.html', 'eliminate');
 
 // Combinar las listas en un solo objeto JSON.
 $resultado = array(
