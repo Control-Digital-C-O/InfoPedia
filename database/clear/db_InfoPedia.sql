@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 26-07-2024 a las 13:25:33
+-- Tiempo de generación: 18-07-2024 a las 00:36:37
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -33,22 +33,13 @@ CREATE TABLE `articulos` (
   `id` int(11) NOT NULL,
   `titulo` varchar(255) NOT NULL,
   `contenido` text NOT NULL,
-  `categoria_id` int(11) DEFAULT 1,
+  `categoria_id` int(11) DEFAULT NULL,
   `autor_id` int(11) DEFAULT NULL,
   `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp(),
   `fecha_modificacion` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `fecha_borrado` timestamp NULL DEFAULT NULL,
   `aprobado` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `articulos`
---
-
-INSERT INTO `articulos` (`id`, `titulo`, `contenido`, `categoria_id`, `autor_id`, `fecha_creacion`, `fecha_modificacion`, `fecha_borrado`, `aprobado`) VALUES
-(3, 'The Impact of Artificial Intelligence on Society', 'Artificial intelligence (AI) is transforming the way we live and work...', 1, 1, '2024-07-21 21:57:00', '2024-07-21 21:57:00', NULL, 0),
-(4, 'Destrucción multiversal omg!', 'La ia decide erradicar a los Anderson del Multiverso!', 1, 4, '2024-07-21 21:57:53', '2024-07-26 07:45:43', NULL, 1),
-(11, 'One Punch Man', 'Una obra que todo mundo debe de ver al menos una ves en su vida, ya que se encarga de transmitir una epica historia donde ya tenemos al protagonista mas fuerte pero este carece de muchas habilidades sociales como para sentirse el heroe numero 1. Nos presentan a los personajes secundario como genos, su disipulo numero 1.', 1, 1, '2024-07-26 11:17:12', '2024-07-26 11:17:12', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -63,13 +54,6 @@ CREATE TABLE `categorias` (
   `creado_por` int(11) DEFAULT NULL,
   `aprobado` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `categorias`
---
-
-INSERT INTO `categorias` (`id`, `nombre`, `descripcion`, `creado_por`, `aprobado`) VALUES
-(1, 'Tecnologia', 'todo sobre informatica', 4, 1);
 
 -- --------------------------------------------------------
 
@@ -134,23 +118,6 @@ CREATE TABLE `usuarios` (
   `fecha_borrado` timestamp NULL DEFAULT NULL,
   `estado` enum('activo','inactivo','baneado') DEFAULT 'activo'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `usuarios`
---
-
-INSERT INTO `usuarios` (`id`, `nombre`, `email`, `password`, `rol`, `foto_perfil`, `fecha_creacion`, `fecha_modificacion`, `fecha_borrado`, `estado`) VALUES
-(1, 'Master', 'controldigitalco@gmail.com', 'Ma245306917', 'master', NULL, '2024-07-17 23:14:50', '2024-07-17 23:14:50', NULL, 'activo'),
-(2, 'johndoe', 'johndoe@example.com', 'password123', 'normal', NULL, '2024-07-21 20:08:53', '2024-07-21 20:08:53', NULL, 'activo'),
-(3, 'janedoe', 'janedoe@example.com', 'password123', 'normal', NULL, '2024-07-21 20:08:53', '2024-07-21 20:08:53', NULL, 'activo'),
-(4, 'mikesmith', 'mikesmith@example.com', 'password123', 'normal', NULL, '2024-07-21 20:08:53', '2024-07-21 20:08:53', NULL, 'activo'),
-(5, 'sarajones', 'sarajones@example.com', 'password123', 'normal', NULL, '2024-07-21 20:08:53', '2024-07-21 20:08:53', NULL, 'activo'),
-(6, 'paulbrown', 'paulbrown@example.com', 'password123', 'normal', NULL, '2024-07-21 20:08:53', '2024-07-21 20:08:53', NULL, 'activo'),
-(7, 'emilywhite', 'emilywhite@example.com', 'password123', 'normal', NULL, '2024-07-21 20:08:53', '2024-07-21 20:08:53', NULL, 'activo'),
-(8, 'davidharris', 'davidharris@example.com', 'password123', 'normal', NULL, '2024-07-21 20:08:53', '2024-07-21 20:08:53', NULL, 'activo'),
-(9, 'lauramartin', 'lauramartin@example.com', 'password123', 'normal', NULL, '2024-07-21 20:08:53', '2024-07-21 20:08:53', NULL, 'activo'),
-(10, 'chriswilson', 'chriswilson@example.com', 'password123', 'normal', NULL, '2024-07-21 20:08:53', '2024-07-21 20:08:53', NULL, 'activo'),
-(11, 'nancylee', 'nancylee@example.com', 'password123', 'normal', NULL, '2024-07-21 20:08:53', '2024-07-21 20:08:53', NULL, 'activo');
 
 -- --------------------------------------------------------
 
@@ -232,13 +199,13 @@ ALTER TABLE `valoracionesarticulos`
 -- AUTO_INCREMENT de la tabla `articulos`
 --
 ALTER TABLE `articulos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `comentarios`
@@ -262,7 +229,7 @@ ALTER TABLE `favoritos`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `valoracionesarticulos`
