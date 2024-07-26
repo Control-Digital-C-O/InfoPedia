@@ -1,4 +1,5 @@
 # InfoPedia
+https://infopedia.free.nf  
 
 InfoPedia es un repositorio de información variada que incluye tutoriales, resúmenes de estudio, anécdotas, historias, reseñas y más. Está dirigido a personas de 15 años en adelante con habilidades de pensamiento crítico. El objetivo es proporcionar una plataforma accesible y útil para la búsqueda y publicación de contenido informativo.
 
