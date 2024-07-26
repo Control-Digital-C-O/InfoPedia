@@ -52,19 +52,29 @@ $user = $result->fetch_assoc();
 
 // Verificar si el usuario fue encontrado
 if ($user === null) {
-  $response["message"] = "Usuario no encontrado. Consulta SQL: SELECT * FROM usuarios WHERE nombre = '$username_or_email' OR email = '$username_or_email'";
+  $response["message"] = "Usuario no encontrado";
   echo json_encode($response);
   exit();
 } else {
   // Verificar la contraseña
   if ($password_input === $user['password']) {
     session_start();
-    $_SESSION['user_id'] = $user['id'];
-    $_SESSION['username'] = $user['nombre'];
-    $response["success"] = true;
-    $response["message"] = "Inicio de sesión exitoso";
-    $response["username"] = $user['nombre'];
-    $response["user_id"] = $user['id'];
+    $_SESSION = array(
+      'user_id' => $user['id'],
+      'username' => $user['nombre'],
+      'rol' => $user['rol'],
+      'email' => $user['email'],
+      'password' => $user['password']
+    );
+    $response = array(
+      "success" => true,
+      "message" => "Inicio de sesión exitoso",
+      "user_id" => $_SESSION['user_id'],
+      "username" => $_SESSION['username'],
+      "rol" => $_SESSION['rol'],
+      "email" => $_SESSION['email'],
+      "password" => $_SESSION['password']
+    );
   } else {
     $response["message"] = "Contraseña incorrecta";
   }

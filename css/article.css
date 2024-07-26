@@ -1,0 +1,90 @@
+.display_articulos {
+  font-family: 'Roboto', sans-serif;
+  color: var(--color_secondary);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 17px;
+  flex-direction: column;
+  align-content: center;
+}
+
+/* Estilos para el artículo completo */
+.articulo-completo {
+  background-color: #f9f9f9; /* Color de fondo claro para mejorar la legibilidad */
+  border: 1px solid #ddd; /* Borde sutil para definir el área del artículo */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 20px; /* Espaciado interno */
+  margin: 20px; /* Espaciado externo */
+  max-width: 800px; /* Ancho máximo para una mejor lectura */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+  opacity: 0; /* Inicialmente oculto para la animación */
+  transform: translateY(20px); /* Inicialmente desplazado hacia abajo para la animación */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Transiciones para la animación */
+  animation: zoomIn 1s ease-out; /* Aplica la animación de zoomIn durante 2 segundos con una transición suave */
+}
+
+.articulo-completo.show {
+  opacity: 1; /* Hacerlo visible */
+  transform: translateY(0); /* Restablecer posición */
+}
+
+/* Estilo para el título del artículo */
+.articulo-completo h1 {
+  font-size: 2em; /* Tamaño grande para el título */
+  color: #333; /* Color de texto oscuro para contraste */
+  margin-bottom: 10px; /* Espaciado inferior */
+}
+
+/* Estilo para el contenido del artículo */
+.articulo-completo p {
+  font-size: 1.2em; /* Tamaño de fuente más grande para una lectura más cómoda */
+  color: #666; /* Color de texto gris oscuro */
+  line-height: 1.6; /* Interlineado para mejorar la legibilidad */
+}
+
+/* Estilo para el span o detalles adicionales */
+.articulo-completo span {
+  display: block; /* Mostrar como bloque para ocupar toda la línea */
+  font-size: 0.9em; /* Tamaño de fuente más pequeño */
+  color: #999; /* Color de texto gris claro */
+  margin-top: 15px; /* Espaciado superior */
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(0.1); /* Empieza con un tamaño muy pequeño */
+    opacity: 0; /* Empieza invisible */
+    transform-origin: center; /* La animación se expande desde el centro */
+  }
+  100% {
+    transform: scale(1); /* Crece hasta su tamaño normal */
+    opacity: 1; /* Alcanza su opacidad completa */
+  }
+}
+
+.botones-articulos {
+  margin-bottom: 25px;
+}
+
+.edit-button, .delete-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  padding: 5px; /* Añadir relleno si es necesario */
+  /* Puedes añadir más estilos si es necesario */
+}
+
+.edit-button {
+  right: 60px;
+}
+
+.delete-button {
+  right: 20px;
+}
+
+.edit-button svg, .delete-button svg {
+  width: 100%; /* Asegúrate de que el SVG ocupe todo el tamaño del botón */
+  height: 100%;
+}

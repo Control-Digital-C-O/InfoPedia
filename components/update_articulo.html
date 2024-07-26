@@ -1,0 +1,42 @@
+<!-- components/editArticleForm.html -->
+<div id="edit-article-form" class="hidden">
+  <h2 class="tituloForm">Editar artículo</h2>
+  <form id="edicionform" method="post">
+    <div class="campo">
+      <label for="article-id" class="input-title">ID:</label>
+      <input id="article-id" name="article-id" class="input-campo" />
+    </div>
+    <div class="campo">
+      <label for="titulo" class="input-title">Título:</label>
+      <input
+        type="text"
+        id="titulo"
+        name="titulo"
+        class="input-campo"
+        required />
+    </div>
+    <div class="campo">
+      <label for="contenido" class="input-title">Contenido:</label>
+      <textarea
+        id="contenido"
+        name="contenido"
+        class="input-campo"
+        required></textarea>
+    </div>
+    <!-- <div class="campo">
+      <label for="categoria" class="input-title">Categoría:</label>
+      <select id="categoria" name="categoria" class="input-campo" required>
+        <option value="">Selecciona una categoría</option>
+        <option value="1">Tecnología</option>
+        <option value="2">Ciencia</option>
+        <option value="3">Salud</option>
+      </select>
+    </div> -->
+    <button type="button" class="btn" onclick="submitEdicionForm()">
+      Guardar
+    </button>
+    <button type="button" class="btn-cancel" onclick="hideEditForm()">
+      Cancelar
+    </button>
+  </form>
+</div>

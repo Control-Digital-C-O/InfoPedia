@@ -17,7 +17,7 @@ if (json_last_error() !== JSON_ERROR_NONE) {
   exit();
 }
 
-if (!isset($input['id'], $input['title'], $input['content'], $input['author_id'], $input['category_id'])) {
+if (!isset($input['id'], $input['title'], $input['content'])) {
   $response["message"] = "Faltan campos requeridos";
   echo json_encode($response);
   exit();
@@ -26,19 +26,18 @@ if (!isset($input['id'], $input['title'], $input['content'], $input['author_id']
 $id = $input['id'];
 $title = $input['title'];
 $content = $input['content'];
-$author_id = $input['author_id'];
-$category_id = $input['category_id'];
 
 require '../config.php';
 
-$stmt = $conexion->prepare("UPDATE articulos SET titulo = ?, contenido = ?, autor_id = ?, categoria_id = ? WHERE id = ?");
+$stmt = $conexion->prepare("UPDATE articulos SET titulo = ?, contenido = ? WHERE id = ?");
 if ($stmt === false) {
   $response["message"] = "Error en la preparación de la consulta: " . $conexion->error;
   echo json_encode($response);
   exit();
 }
 
-$stmt->bind_param("ssiii", $title, $content, $author_id, $category_id, $id);
+// Corregido: Ajustar el número de parámetros en bind_param
+$stmt->bind_param("ssi", $title, $content, $id);
 
 if ($stmt->execute()) {
   if ($stmt->affected_rows > 0) {

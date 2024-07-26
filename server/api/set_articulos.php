@@ -1,52 +1,46 @@
 <?php
 header("Content-Type: application/json");
-$response = array("success" => false, "message" => "");
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-  $response["message"] = "Método de solicitud no permitido";
-  echo json_encode($response);
-  exit();
+try {
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    require '../config.php';
+    session_start();
+
+    if (!isset($_SESSION['user_id'])) {
+      echo json_encode(array("success" => false, "message" => "No estás logueado."));
+      exit;
+    }
+
+    $titulo = $_POST['title'] ?? null;
+    $contenido = $_POST['content'] ?? null;
+
+    if (!$titulo || !$contenido) {
+      echo json_encode(array("success" => false, "message" => "Datos incompletos."));
+      exit;
+    }
+
+    $autor_id = $_SESSION['user_id'];
+
+    $sql = "INSERT INTO articulos (titulo, contenido, autor_id) VALUES (?, ?, ?)";
+    $stmt = $conexion->prepare($sql);
+
+    if ($stmt === false) {
+      throw new Exception("Error en la preparación de la consulta.");
+    }
+
+    $stmt->bind_param("ssi", $titulo, $contenido, $autor_id);
+
+    if ($stmt->execute()) {
+      echo json_encode(array("success" => true, "message" => "Artículo creado exitosamente."));
+    } else {
+      throw new Exception("Error al crear el artículo.");
+    }
+
+    $stmt->close();
+    $conexion->close();
+  } else {
+    throw new Exception("Método HTTP no permitido.");
+  }
+} catch (Exception $e) {
+  echo json_encode(array("success" => false, "message" => $e->getMessage()));
 }
-
-// Leer el cuerpo de la solicitud
-$input = json_decode(file_get_contents('php://input'), true);
-
-if (json_last_error() !== JSON_ERROR_NONE) {
-  $response["message"] = "Error en el formato de JSON";
-  echo json_encode($response);
-  exit();
-}
-
-if (!isset($input['title'], $input['content'], $input['author_id'], $input['category_id'])) {
-  $response["message"] = "Faltan campos requeridos";
-  echo json_encode($response);
-  exit();
-}
-
-$title = $input['title'];
-$content = $input['content'];
-$author_id = $input['author_id'];
-$category_id = $input['category_id'];
-
-require '../config.php';
-
-$stmt = $conexion->prepare("INSERT INTO articulos (titulo, contenido, autor_id, categoria_id) VALUES (?, ?, ?, ?)");
-if ($stmt === false) {
-  $response["message"] = "Error en la preparación de la consulta: " . $conexion->error;
-  echo json_encode($response);
-  exit();
-}
-
-$stmt->bind_param("ssii", $title, $content, $author_id, $category_id);
-
-if ($stmt->execute()) {
-  $response["success"] = true;
-  $response["message"] = "Artículo creado exitosamente";
-} else {
-  $response["message"] = "Error al crear el artículo: " . $stmt->error;
-}
-
-$stmt->close();
-$conexion->close();
-
-echo json_encode($response);

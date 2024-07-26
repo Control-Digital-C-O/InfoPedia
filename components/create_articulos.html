@@ -1,0 +1,38 @@
+<!-- components/editArticleForm.html -->
+<div id="create-article-form" class="hidden">
+  <h2 class="tituloForm">Crear Articulo</h2>
+  <form id="creacionForm" method="post">
+    <div class="campo">
+      <label for="new-title" class="input-title">Título:</label>
+      <input
+        type="text"
+        id="new-title"
+        name="title"
+        placeholder="Título"
+        class="input-campo"
+        required />
+    </div>
+    <div class="campo">
+      <label for="new-content" class="input-title">Contenido:</label>
+      <textarea
+        id="new-content"
+        name="content"
+        placeholder="Contenido"
+        class="input-campo"
+        required></textarea>
+    </div>
+    <!-- <div class="campo">
+      <label for="categoria" class="input-title">Categoría:</label>
+      <select id="categoria" name="categoria" class="input-campo" required>
+        <option value="">Selecciona una categoría</option>
+        <option value="1">Tecnología</option>
+        <option value="2">Ciencia</option>
+        <option value="3">Salud</option>
+      </select>
+    </div> -->
+    <button type="button" class="btn" id="btnCreate">Guardar</button>
+    <button type="button" class="btn-cancel" onclick="hideCreateForm()">
+      Cancelar
+    </button>
+  </form>
+</div>

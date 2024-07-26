@@ -1,0 +1,51 @@
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+  /* Estilos adicionales para el formulario visible */
+  /* border: 2px solid #102027; */
+  /* padding: 20px; */
+  /* border-radius: 10px; */
+  /* transition: transform 0.5s ease-in-out; */
+}
+
+.show-anim {
+  transform: scale(1.1);
+}
+
+.show-blue {
+  background-color: #e3f2fd;
+  color: #0d47a1;
+}
+
+.show-green {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.show-red {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.create-article-button {
+  /* Estilos para el botón */
+  padding: 10px 20px;
+  margin-bottom: 15px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.create-article-button:hover {
+  background-color: #0056b3;
+}
+
+#button-container{
+  display: flex;
+  justify-content: flex-end;
+}
